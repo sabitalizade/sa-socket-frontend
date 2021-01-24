@@ -68,6 +68,7 @@ border-radius: 20px;
 padding: 0 15px;
 }
 .sendMessage>button{
+  display: none;
   font-size: 30px;
   width: 40px;
   border: 0;

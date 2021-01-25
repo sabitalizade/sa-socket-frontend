@@ -1,12 +1,20 @@
 import { useEffect, useState} from "react"
 import './App.css';
 import Pusher from "pusher-js"
-import Chat from "./Chat";
+import Chat from "./components/Chat";
 import axios from "./axios"
+import Join from "./components/Join";
+import {
+  BrowserRouter as Router,  
+  Route,
+  
+} from "react-router-dom";
+import Register from "./components/Register";
 
 function App() {
   const [messages, setMessages] = useState([])
-  
+
+  // console.log(name)
   useEffect(() => {
    axios.get("/message/all").then(res=>{
      setMessages(res.data)
@@ -20,8 +28,7 @@ function App() {
     });
   
     var channel = pusher.subscribe('asyachannel');
-    channel.bind('asyaevent', (newMessage)=> {
-      // alert(JSON.stringify(newMessage));
+    channel.bind('asyaevent', (newMessage)=> {      
       setMessages([...messages,newMessage])
     });
 
@@ -29,15 +36,25 @@ function App() {
       channel.unbind_all();
       channel.unsubscribe()
     }
-
   }, [messages])
   // console.log(messages)
   return (
+    <Router>
     <div className="app">
       <div className="appContainer">
-          <Chat messages={messages}/>
+        <Route path="/" exact>
+        <Join />      
+        </Route>
+        <Route path="/register" >
+        <Register />
+        </Route>
+        <Route path="/chat">
+           <Chat messages={messages}/>
+        </Route>
+
       </div>
     </div>
+    </Router>
   );
 }
 

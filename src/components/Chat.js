@@ -32,7 +32,7 @@ const Chat = ({messages}) => {
         }, [messages])
     return (
         <div className="chatBody">
-            <div className="userName">Sabit</div>
+            <div className="userName">{userinfo?.username}</div>
             <div className="chatContent">
 
                 {messages.map((message,id)=>(

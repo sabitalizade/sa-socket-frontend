@@ -7,14 +7,13 @@ const Chat = ({messages}) => {
     const [input, setinput] = useState("")
 
     const userinfo =JSON.parse(sessionStorage.getItem("info"))
-      console.log(userinfo.username)
+      console.log(userinfo?.username)
 
         const sendMessage= async e=>{
             e.preventDefault()
             if(input){
-
                 await axios.post('/message/new',{
-                     name:userinfo.username,
+                     name:userinfo?userinfo.username:"Unknown",
                      message:input,
                      timestamp:`${time.getHours()}:${time.getMinutes()}`,
                      recived:false
@@ -37,7 +36,7 @@ const Chat = ({messages}) => {
             <div className="chatContent">
 
                 {messages.map((message,id)=>(
-                    <div className={message.name===userinfo.username?"messageBody recived" : "messageBody"} key={id}  ref={messagesEndRef}  >
+                    <div className={message.name===userinfo?.username?"messageBody recived" : "messageBody"} key={id}  ref={messagesEndRef}  >
                         <span className="message">{message.message}</span>
                         <span className="time">{message.timestamp}</span>
                     </div>

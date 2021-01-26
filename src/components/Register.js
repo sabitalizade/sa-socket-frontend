@@ -1,6 +1,5 @@
 import axios from '../axios';
 import React, { useState } from 'react'
-// import { Link } from "react-router-dom";
 import './Join.css'
 import { Link, useHistory } from 'react-router-dom';
 
@@ -41,7 +40,7 @@ const Register=()=> {
           <div>
             <input placeholder="Password" className="joinInput mt-20" type="password" name="password" onChange={handleChange} />
           </div>
-          <button className={'button mt-20'} type="submit">Sign In</button>
+          <button className={'button mt-20'} type="submit">Register now</button>
           <Link className='link' to="/">Join</Link>
         </div>
       </form>

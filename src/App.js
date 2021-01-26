@@ -14,7 +14,6 @@ import Register from "./components/Register";
 function App() {
   const [messages, setMessages] = useState([])
   
-  console.log(messages)
   useEffect(() => {
    axios.get("/message/all").then(res=>{
      setMessages(res.data)

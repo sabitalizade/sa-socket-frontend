@@ -4,13 +4,14 @@
 .app{
   background: rgb(0, 0, 0);
   width: 100%;
-  height: calc(100vh -56px);
+  max-height: calc(100vh - 56px);
+  height: 100%;
   display: flex;
   /* justify-content: center;
   align-items: center; */
 }
 .appContainer{
-  height: 100vh;
+  height: calc(100vh );
   width: 100vw;
   background:rgb(57, 72, 102);
 }
@@ -22,6 +23,7 @@
   background: rgb(89, 80, 139);
   font-size: 22px;
   color: aliceblue;
+  z-index: 9;
 }
 .chatContent{
   padding: 10px;
@@ -39,25 +41,40 @@
   background: #888;
 }
 .messageBody{
+  position: relative;
   display: flex;
+  max-width: calc(100vw - 60px);
   border-radius: 10px;
   padding: 10px;
   background: rgb(177, 177, 177);
-  margin-top: 10px;
+  margin-top: 18px;
   align-self: flex-start;
+}
+.username{
+  position: absolute;
+  top: -15px;
+  font-size: 12px;
+  color: aliceblue;
 }
 .recived{
   align-self: flex-end;
   background: rgb(130, 255, 119);
 }
+.recived>.username{
+  right: 0;
+}
 .message{
+  max-width: 90%;
   font-size: 15px;
+  word-wrap: break-word;
 }
 .time{
   font-size: 10px;
   margin-left: 10px;
 }
 .sendMessage{
+  position: fixed;
+  bottom: 0;
   height: 40px;
   width: 100%;
   display: flex;

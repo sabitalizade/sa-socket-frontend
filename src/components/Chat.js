@@ -7,7 +7,28 @@ const Chat = ({messages}) => {
     const [input, setinput] = useState("")
 
     const userinfo =JSON.parse(sessionStorage.getItem("info"))
-      console.log(userinfo?.username)
+      // console.log(userinfo?.username)
+
+
+
+
+      const getDeviceType = () => {
+        const ua = navigator.userAgent;
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+          return "tablet";
+        }
+        if (
+          /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+            ua
+          )
+        ) {
+          return "mobile";
+        }
+        return "desktop";
+      };
+
+console.log(getDeviceType());
+
 
         const sendMessage= async e=>{
             e.preventDefault()
@@ -37,6 +58,8 @@ const Chat = ({messages}) => {
 
                 {messages.map((message,id)=>(
                     <div className={message.name===userinfo?.username?"messageBody recived" : "messageBody"} key={id}  ref={messagesEndRef}  >
+
+                        <span className="username">{message.name}</span>
                         <span className="message">{message.message}</span>
                         <span className="time">{message.timestamp}</span>
                     </div>

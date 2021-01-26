@@ -10,7 +10,7 @@ const Join=()=> {
   const [data, setData] = useState();
   let history = useHistory();
 
-  console.log(loginData);
+  // console.log(loginData);
 
   sessionStorage.setItem("info",JSON.stringify(data))
 

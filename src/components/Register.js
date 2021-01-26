@@ -10,7 +10,7 @@ const Register=()=> {
   const [data, setData] = useState();
   let history = useHistory();
 
-  console.log(registerData)
+  // console.log(registerData)
 
   sessionStorage.setItem("info",JSON.stringify(data))
 

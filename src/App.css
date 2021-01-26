@@ -61,7 +61,7 @@
   background: rgb(130, 255, 119);
 }
 .recived>.username{
-  right: 0;
+  right: 15px;
 }
 .message{
   max-width: 90%;

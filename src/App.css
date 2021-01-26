@@ -16,6 +16,7 @@
 }
 
 .userName{
+  position: fixed;
   padding: 5px 0 5px 20px;
   background: rgb(89, 80, 139);
   font-size: 22px;

@@ -21,7 +21,7 @@ function App() {
   }, []);
   const deleteChat =()=>{
     axios.post("/message/deleteall").then(()=>{
-      setMessages("") 
+      setMessages([]) 
     })
 }
   useEffect(() => {

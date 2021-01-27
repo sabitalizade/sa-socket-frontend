@@ -27,7 +27,7 @@ const Join=()=> {
       setData(res.data)
       history.push("/chat")
     } catch(error){
-      console.log(error.response,"hgvgvyh")
+      console.log(error.message,"hgvgvyh")
     }
     
   }

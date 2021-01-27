@@ -13,7 +13,7 @@
 .appContainer{
   height: calc(100vh );
   width: 100vw;
-  background:rgb(57, 72, 102);
+  background:#171727;
 }
 
 .userName{
@@ -22,16 +22,18 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: rgb(89, 80, 139);
+  background: #0F0F1B;
   font-size: 22px;
   color: aliceblue;
   z-index: 9;
+  align-items: center;
+  text-transform: capitalize;
 }
 .userName .deleteall{
 margin-right: 10px;
 border: 1px solid #888;
-border-radius: 5px ;
-background: rgb(0, 88, 0);
+border-radius: 10px ;
+background: rgb(42, 110, 104);
 padding: 3px 10px;
 cursor: pointer;
 

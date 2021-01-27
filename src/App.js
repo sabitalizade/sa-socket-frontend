@@ -19,7 +19,11 @@ function App() {
      setMessages(res.data)
    })
   }, []);
-
+  const deleteChat =()=>{
+    axios.post("/message/deleteall").then(()=>{
+      setMessages("") 
+    })
+}
   useEffect(() => {
    
     var pusher = new Pusher('5e158d5fe3e9f7113dc8', {
@@ -48,7 +52,7 @@ function App() {
         <Register />
         </Route>
         <Route path="/chat">
-           <Chat messages={messages}/>
+           <Chat messages={messages} deleteChat={deleteChat}/>
         </Route>
 
       </div>

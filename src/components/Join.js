@@ -17,13 +17,19 @@ const Join=()=> {
   const handleChange= e=>{
       setLoginData({...loginData,[e.target.name]:e.target.value})
   }
-  const handleSubmit=  e=>{
+  const handleSubmit= async e=>{
     e.preventDefault()
-    axios.post("/login",loginData)
-    .then(res=>{
+
+    const res= await axios.post("/login",loginData)
+    console.log(res)
+    try{
+      console.log(res)
       setData(res.data)
       history.push("/chat")
-    })
+    } catch(error){
+      console.log(error.response,"hgvgvyh")
+    }
+    
   }
 
 
@@ -33,10 +39,10 @@ const Join=()=> {
         <div className="joinInnerContainer">
           <h1 className="heading">Join</h1>
           <div>
-            <input placeholder="Email" className="joinInput" type="email" name="email" onChange={handleChange} />
+            <input placeholder="Email" required className="joinInput" type="email" name="email" onChange={handleChange} />
           </div>
           <div>
-            <input placeholder="Password" className="joinInput mt-20" type="password" name="password" onChange={handleChange} />
+            <input placeholder="Password" required className="joinInput mt-20" type="password" name="password" onChange={handleChange} />
           </div>
           <button className={'button mt-20'} type="submit">Sign In</button>
            <Link className='link' to="/register">Register now</Link>

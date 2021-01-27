@@ -16,13 +16,24 @@ const Register=()=> {
   const handleChange= e=>{
       setRegisterData({...registerData,[e.target.name]:e.target.value})
   }
-  const handleSubmit=  e=>{
+  const handleSubmit= async e=>{
     e.preventDefault()
-    axios.post("/register",registerData)
-    .then(res=>{
+
+    const res= await axios.post("/register",registerData)
+    console.log(res)
+    try{
+      console.log(res)
       setData(res.data)
       history.push("/chat")
-    })
+    } catch(error){
+      console.log(error)
+    }
+
+    // axios.post("/register",registerData)
+    // .then(res=>{
+    //   setData(res.data)
+    //   history.push("/chat")
+    // })
   }
 
 

@@ -19,11 +19,22 @@
 .userName{
   position: fixed;
   padding: 5px 0 5px 20px;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   background: rgb(89, 80, 139);
   font-size: 22px;
   color: aliceblue;
   z-index: 9;
+}
+.userName .deleteall{
+margin-right: 10px;
+border: 1px solid #888;
+border-radius: 5px ;
+background: rgb(0, 88, 0);
+padding: 3px 10px;
+cursor: pointer;
+
 }
 .chatContent{
   padding: 10px;
@@ -33,6 +44,7 @@
   display: flex;
   flex-flow: column;
   align-items: flex-end;
+  padding-top: 50px;
 }
 .chatContent::-webkit-scrollbar {
   width: 2px;

@@ -1,7 +1,7 @@
 import axios from '../axios'
 import React, { useEffect, useRef, useState } from 'react'
 
-const Chat = ({messages}) => {
+const Chat = ({messages,deleteChat}) => {
     const time=new Date()    
     const messagesEndRef = useRef(null)
     const [input, setinput] = useState("")
@@ -12,22 +12,22 @@ const Chat = ({messages}) => {
 
 
 
-      const getDeviceType = () => {
-        const ua = navigator.userAgent;
-        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-          return "tablet";
-        }
-        if (
-          /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-            ua
-          )
-        ) {
-          return "mobile";
-        }
-        return "desktop";
-      };
+//       const getDeviceType = () => {
+//         const ua = navigator.userAgent;
+//         if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+//           return "tablet";
+//         }
+//         if (
+//           /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+//             ua
+//           )
+//         ) {
+//           return "mobile";
+//         }
+//         return "desktop";
+//       };
 
-console.log(getDeviceType());
+// console.log(getDeviceType());
 
 
         const sendMessage= async e=>{
@@ -51,9 +51,11 @@ console.log(getDeviceType());
         useEffect(() => {
             scrollToBottom()
         }, [messages])
+
+    
     return (
         <div className="chatBody">
-            <div className="userName">{userinfo?.username}</div>
+            <div className="userName">{userinfo?.username}<span onClick={deleteChat} className="deleteall">clear chat</span></div>
             <div className="chatContent">
 
                 {messages.map((message,id)=>(

@@ -51,13 +51,39 @@ html, body {
       width: 100%;
   }
   .link{
+    display: block;
     color:#ffffff;
     padding: 20px 0;
   }
   .mt-20 {
     margin-top: 20px;
   }
-  
+  .disabled{
+    /* background:rgba(41, 119, 255,.1) ; */
+    position: relative;
+    opacity: .5;
+    overflow: hidden;
+  }
+  .disabled::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #000;
+    animation:loading 1s linear infinite ;
+  }
+  @keyframes loading{
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+
+    }
+  }
+
   @media (min-width: 320px) and (max-width: 480px) {
     .joinOuterContainer {
       height: 100%;

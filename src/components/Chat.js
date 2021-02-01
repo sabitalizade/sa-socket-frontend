@@ -9,27 +9,6 @@ const Chat = ({messages,deleteChat}) => {
     const userinfo =JSON.parse(sessionStorage.getItem("info"))
       // console.log(userinfo?.username)
 
-
-
-
-//       const getDeviceType = () => {
-//         const ua = navigator.userAgent;
-//         if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-//           return "tablet";
-//         }
-//         if (
-//           /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-//             ua
-//           )
-//         ) {
-//           return "mobile";
-//         }
-//         return "desktop";
-//       };
-
-// console.log(getDeviceType());
-
-
         const sendMessage= async e=>{
             e.preventDefault()
             if(input){
@@ -43,15 +22,12 @@ const Chat = ({messages,deleteChat}) => {
             }
         }
 
-
-
         const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+            messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
         }
         useEffect(() => {
             scrollToBottom()
         }, [messages])
-
     
     return (
         <div className="chatBody">
@@ -60,7 +36,7 @@ const Chat = ({messages,deleteChat}) => {
 
                 {messages.map((message,id)=>(
                     <div className={message.name===userinfo?.username?"messageBody recived" : "messageBody"} key={id}  ref={messagesEndRef}  >
-
+                        
                         <span className="username">{message.name}</span>
                         <span className="message">{message.message}</span>
                         <span className="time">{message.timestamp}</span>

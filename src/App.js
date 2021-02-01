@@ -1,21 +1,20 @@
 import { useEffect, useState} from "react"
 import './App.css';
-import Pusher from "pusher-js"
+// import Pusher from "pusher-js"
 import Chat from "./components/Chat";
 import axios from "./axios"
 import Join from "./components/Join";
-import {
-  BrowserRouter as Router,  
-  Route,
-  
-} from "react-router-dom";
+import {  BrowserRouter as Router,  Route} from "react-router-dom";
 import Register from "./components/Register";
+import { io } from 'socket.io-client';
+const ENDPOINT = "http://localhost:3030";
 
 function App() {
   const [messages, setMessages] = useState([])
   
   useEffect(() => {
    axios.get("/message/all").then(res=>{
+    //  console.log(res.data)
      setMessages(res.data)
    })
   }, []);
@@ -24,22 +23,17 @@ function App() {
       setMessages([]) 
     })
 }
-  useEffect(() => {
-   
-    var pusher = new Pusher('5e158d5fe3e9f7113dc8', {
-      cluster: 'eu'
-    });
-  
-    var channel = pusher.subscribe('asyachannel');
-    channel.bind('asyaevent', (newMessage)=> {      
-      setMessages([...messages,newMessage])
+  useEffect(() => {    
+    const socket = io(ENDPOINT, { transport : ['websocket'] });
+
+    socket.on("msg", data => {
+      console.log(data);
+      setMessages([...messages,data])
+      // console.log("fuck");
     });
 
-    return ()=>{
-      channel.unbind_all();
-      channel.unsubscribe()
-    }
-  }, [messages])
+    return ()=> socket.disconnect();
+  },[messages])
   // console.log(messages)
   return (
     <Router>

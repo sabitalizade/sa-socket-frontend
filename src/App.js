@@ -7,7 +7,8 @@ import Join from "./components/Join";
 import {  BrowserRouter as Router,  Route} from "react-router-dom";
 import Register from "./components/Register";
 import { io } from 'socket.io-client';
-const ENDPOINT = "http://localhost:3030";
+// const ENDPOINT = "http://localhost:3030";
+const ENDPOINT = "https://sasocketserver.herokuapp.com/";
 
 function App() {
   const [messages, setMessages] = useState([])

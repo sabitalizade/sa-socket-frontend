@@ -46,7 +46,7 @@ const Chat = ({messages,deleteChat}) => {
             </div>
             <form className="sendMessage">
                         <input onChange={(e)=>setinput(e.target.value)} type="text" value={input} placeholder="Type a message"/>
-                        <button onClick={sendMessage} type="submit">&#10095;</button>
+                        <button onClick={sendMessage} type="submit"><img src="./assets/icons/send.svg" alt="" /></button>
               </form>
         </div>
     )
